@@ -4,7 +4,7 @@
 
 Github action that updates existing IAM Policy with a New Version Policy JSON.
 
-This allows a Self service approach to organization users to Update AWS Policies without having to contant the Cloud Owner in the organization, but simply open a PR.
+This allows a Self service approach to organization users to Update AWS Policies without the need to contact the Cloud Owner in the organization, but simply open a PR.
 Once the PR is approved the Action updates the policy automaticly.
 
 ## Usage
