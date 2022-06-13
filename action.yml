@@ -1,5 +1,7 @@
 name: 'IAM Policy Update'
-icon: anchor
+branding:
+  icon: book-open
+  color: purple
 description: 'Update the selected IAM policy JSON with a new one'
 inputs:
   policyname:
