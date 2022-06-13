@@ -24,8 +24,5 @@ runs:
     - run: cat ${{ inputs.policyfile }}
       shell: bash
     - run: |
-        aws iam create-policy-version 
-        --policy-arn ${{ inputs.policyarn }}
-        --policy-document file://${{ inputs.policyfile }}
-        --set-as-default
+        aws iam create-policy-version --policy-arn ${{ inputs.policyarn }} --policy-document file://${{ inputs.policyfile }} --set-as-default
       shell: bash
