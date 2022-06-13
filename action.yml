@@ -1,0 +1,25 @@
+name: 'IAM Policy Update'
+description: 'Update the selected IAM policy JSON with a new one'
+inputs:
+  policyname:
+    description: 'The name (Not ARN) of the policy to modify'
+    required: true
+    default: ''
+  newiampolicyfile:
+    description: 'The location of the new policy file'
+    required: true
+    default: ''
+outputs:
+  newpolicy:
+    description: "Policy Modified Message"
+    value: The Policy ${{ steps.get-policy-arn.outputs.policy-arn }} were updated successfully with the new policy from file ${{ inputs.newiampolicyfile }} 
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Applying the new policy file ${{ inputs.newiampolicyfile }}"
+      shell: bash
+    - run: cat ${{ inputs.newiampolicyfile }}
+      shell: bash
+    - id: get-policy-arn
+      run: "::set-output name=policy-arn::$(echo arn:aws:iam::`aws sts get-caller-identity --query Account --output text`:policy/developers_access_policy)"
+      shell: bash
