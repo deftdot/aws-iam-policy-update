@@ -1,6 +1,7 @@
 # aws-iam-policy-update
 ![Github Action](https://flat.badgen.net/badge/Github/Action/green?icon=github)
 ![MIT license](https://flat.badgen.net/badge/License/MIT/green)
+
 Github action that updates existing IAM Policy with a New Version Policy JSON.
 
 This allows a Self service approach to organization users to Update AWS Policies without having to contant the Cloud Owner in the organization, but simply open a PR.
@@ -8,7 +9,8 @@ Once the PR is approved the Action updates the policy automaticly.
 
 ## Usage
 This action rely on the connection to AWS to be already established, this can be done by setting manually the environment variables: 
-"AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION". Or by the Using AssumeRole Action prior to running this Action. (As in the example below)
+"AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION". 
+Or by the Using AssumeRole Action prior to running this Action. (As in the example below)
 
 ## Inputs
 | Name | Description | Required |
