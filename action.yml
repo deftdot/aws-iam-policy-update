@@ -4,25 +4,28 @@ branding:
   color: purple
 description: 'Update the selected IAM policy JSON with a new one'
 inputs:
-  policyname:
-    description: 'The name (Not ARN) of the policy to modify'
+  policyarn:
+    description: 'The ARN of the policy to modify'
     required: true
     default: ''
-  newiampolicyfile:
+  policyfile:
     description: 'The location of the new policy file'
     required: true
     default: ''
 outputs:
   newpolicy:
     description: "Policy Modified Message"
-    value: The Policy ${{ steps.get-policy-arn.outputs.policy-arn }} were updated successfully with the new policy from file ${{ inputs.newiampolicyfile }} 
+    value: The Policy ${{ inputs.policyarn }} were updated successfully with the new policy from file ${{ inputs.policyfile }} 
 runs:
   using: "composite"
   steps:
-    - run: echo "Applying the new policy file ${{ inputs.newiampolicyfile }}"
+    - run: echo "Applying the new policy file ${{ inputs.policyfile }}"
       shell: bash
-    - run: cat ${{ inputs.newiampolicyfile }}
+    - run: cat ${{ inputs.policyfile }}
       shell: bash
-    - id: get-policy-arn
-      run: "::set-output name=policy-arn::$(echo arn:aws:iam::`aws sts get-caller-identity --query Account --output text`:policy/developers_access_policy)"
+    - run: |
+        aws iam create-policy-version 
+        --policy-arn ${{ inputs.policyarn }}
+        --policy-document file://${{ inputs.policyfile }}
+        --set-as-default
       shell: bash
