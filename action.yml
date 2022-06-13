@@ -1,4 +1,5 @@
 name: 'IAM Policy Update'
+icon: anchor
 description: 'Update the selected IAM policy JSON with a new one'
 inputs:
   policyname:
