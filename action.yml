@@ -1,4 +1,7 @@
 name: 'IAM Policy Update'
+branding:
+  icon: book-open
+  color: purple
 description: 'Update the selected IAM policy JSON with a new one'
 inputs:
   policyname:
@@ -21,5 +24,5 @@ runs:
     - run: cat ${{ inputs.newiampolicyfile }}
       shell: bash
     - id: get-policy-arn
-      run: echo "CURRENT_ARN=$(echo arn:aws:iam::`aws sts get-caller-identity --query Account --output text`:policy/developers_access_policy)" >> $GITHUB_ENV
+      run: "::set-output name=policy-arn::$(echo arn:aws:iam::`aws sts get-caller-identity --query Account --output text`:policy/developers_access_policy)"
       shell: bash
