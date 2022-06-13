@@ -21,5 +21,5 @@ runs:
     - run: cat ${{ inputs.newiampolicyfile }}
       shell: bash
     - id: get-policy-arn
-      run: "::set-output name=policy-arn::$(echo arn:aws:iam::`aws sts get-caller-identity --query Account --output text`:policy/developers_access_policy)"
+      run: echo "CURRENT_ARN=$(echo arn:aws:iam::`aws sts get-caller-identity --query Account --output text`:policy/developers_access_policy)" >> $GITHUB_ENV
       shell: bash
