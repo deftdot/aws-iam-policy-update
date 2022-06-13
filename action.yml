@@ -15,16 +15,16 @@ inputs:
 outputs:
   newpolicy:
     description: "Policy Modified Message"
-    value: The Policy ${{ inputs.policyarn }} were updated successfully with the new policy from file ${{ inputs.policyfile }} 
+    value: The Policy ${{ inputs.policy-arn }} were updated successfully with the new policy from file ${{ inputs.policy-file }} 
 runs:
   using: "composite"
   steps:
-    - run: echo "Applying the new policy file ${{ inputs.policyfile }}"
+    - run: echo "Applying the new policy file ${{ inputs.policy-file }}"
       shell: bash
-    - run: cat ${{ inputs.policyfile }}
+    - run: cat ${{ inputs.policy-file }}
       shell: bash
     - run: |
-        aws iam create-policy-version --policy-arn ${{ inputs.policyarn }} --policy-document file://${{ inputs.policyfile }} --set-as-default
+        aws iam create-policy-version --policy-arn ${{ inputs.policy-arn }} --policy-document file://${{ inputs.policy-file }} --set-as-default
       shell: bash
-    - run: echo "Finished applying new Policy - ${{ inputs.policyfile }}, To ARN - ${{ inputs.policyarn }}."
+    - run: echo "Finished applying new Policy - ${{ inputs.policy-file }}, To ARN - ${{ inputs.policy-arn }}."
       shell: bash
