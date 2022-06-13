@@ -4,11 +4,11 @@ branding:
   color: purple
 description: 'Update the selected IAM policy JSON with a new one'
 inputs:
-  policyarn:
+  policy-arn:
     description: 'The ARN of the policy to modify'
     required: true
     default: ''
-  policyfile:
+  policy-file:
     description: 'The location of the new policy file'
     required: true
     default: ''
@@ -25,4 +25,6 @@ runs:
       shell: bash
     - run: |
         aws iam create-policy-version --policy-arn ${{ inputs.policyarn }} --policy-document file://${{ inputs.policyfile }} --set-as-default
+      shell: bash
+    - run: echo "Finished applying new Policy - ${{ inputs.policyfile }}, To ARN - ${{ inputs.policyarn }}."
       shell: bash
