@@ -40,8 +40,8 @@ jobs:
       - name: modify the policy
         uses: deftdot/aws-iam-policy-update@v1
         with:
-          policyarn: ${{ secrets.POLICY_ARN }}
-          policyfile: 'policies/policy.json' #Assume the policy JSON located at {repo_root}/policies/policy.json
+          policy-arn: ${{ secrets.POLICY_ARN }}
+          policy-file: 'policies/policy.json' #Assume the policy JSON located at {repo_root}/policies/policy.json
 ```
 
 ```yaml
@@ -63,6 +63,6 @@ jobs:
       - name: modify the policy
         uses: deftdot/aws-iam-policy-update@v1
         with:
-          policyarn: ${{ secrets.POLICY_ARN }}
-          policyfile: 'policies/policy.json' #Assume the policy JSON located at {repo_root}/policies/policy.json
+          policy-arn: ${{ secrets.POLICY_ARN }}
+          policy-file: 'policies/policy.json' #Assume the policy JSON located at {repo_root}/policies/policy.json
 ```
