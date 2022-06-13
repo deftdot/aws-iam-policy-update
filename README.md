@@ -38,7 +38,7 @@ jobs:
           aws-region: us-east-1
       
       - name: modify the policy
-        uses: deftdot/aws-iam-policy-update@v0.1
+        uses: deftdot/aws-iam-policy-update@v1
         with:
           policyarn: ${{ secrets.POLICY_ARN }}
           policyfile: 'policies/policy.json' #Assume the policy JSON located at {repo_root}/policies/policy.json
@@ -61,7 +61,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       
       - name: modify the policy
-        uses: deftdot/aws-iam-policy-update@v0.1
+        uses: deftdot/aws-iam-policy-update@v1
         with:
           policyarn: ${{ secrets.POLICY_ARN }}
           policyfile: 'policies/policy.json' #Assume the policy JSON located at {repo_root}/policies/policy.json
